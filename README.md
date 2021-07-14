@@ -17,4 +17,4 @@ python3 main.py $port (your redis port number)
 
 For Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/JeelPatel231/telegram-inline-sticker)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/JeelPatel231/telegram-inline-sticker-bot)
