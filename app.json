@@ -1,0 +1,12 @@
+{
+    "name": "Inline Sticker Bot",
+    "description": "later",
+    "stack":"container",
+    "image":"Dockerfile",
+    "env": {
+      "BOT_API_KEY": {
+      },
+      "OWNER_ID": {
+      }
+    }
+  }
