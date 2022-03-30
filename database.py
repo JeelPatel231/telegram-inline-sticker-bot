@@ -85,8 +85,10 @@ def add_tag(file_id:str,file_unique_id:str,new_tags:list,type:str) -> None:
 
     if old_tags != []:
         delete_sticker(file_unique_id)
+        union = list(set(old_tags[0][0]).union(set(new_tags)))
     else:
-        add_sticker(file_id,file_unique_id,old_tags+new_tags,type)
+        union = new_tags
+    add_sticker(file_id,file_unique_id,union,type)
 
 def remove_tag(file_id:str,file_unique_id,new_tags:list,type:str) -> None:
     # not using postgres array_remove because it only
@@ -96,7 +98,7 @@ def remove_tag(file_id:str,file_unique_id,new_tags:list,type:str) -> None:
 
     if old_tags != []:
         delete_sticker(file_unique_id)
-        diff_list = [element for element in old_tags[0][0] if element not in new_tags]
+        diff_list = list(set(old_tags[0][0]).difference(set(new_tags)))
     else:
         diff_list = new_tags
     add_sticker(file_id,file_unique_id,diff_list,type)
