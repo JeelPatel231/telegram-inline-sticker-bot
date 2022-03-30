@@ -83,8 +83,8 @@ def add_tag(file_id:str,file_unique_id:str,new_tags:list,type:str) -> None:
 
     old_tags = get_tags(file_unique_id)
 
-    if not old_tags == []:
-        delete_sticker(file_id)
+    if old_tags != []:
+        delete_sticker(file_unique_id)
     else:
         add_sticker(file_id,file_unique_id,old_tags+new_tags,type)
 
@@ -94,8 +94,8 @@ def remove_tag(file_id:str,file_unique_id,new_tags:list,type:str) -> None:
 
     old_tags = get_tags(file_unique_id)
 
-    if not old_tags == []:
-        delete_sticker(file_id)
+    if old_tags != []:
+        delete_sticker(file_unique_id)
         diff_list = [element for element in old_tags[0][0] if element not in new_tags]
     else:
         diff_list = new_tags
