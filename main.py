@@ -85,7 +85,11 @@ def auth(message):
 def tags(message):
     if not check_conditions_met(message,force_tags=False,force_auth=False): return
     data = get_attrs(message,force_tags=False)
-    bot.reply_to(message,database.get_tags(data[1]))
+    response = database.get_tags(data[1])
+    if response == [] :
+        bot.reply_to(message,"Media not found in DB!")
+    else:
+        bot.reply_to(message,response)
 
 @bot.inline_handler(func=lambda m: True)
 def testmessage(inline_query):
