@@ -36,7 +36,7 @@ def get_attrs(message,force_tags:bool = True) -> tuple:
     if not force_tags: return (file_id,file_unique_id,type)
 
     tags = set(message.text.split(" ",1)[1].split(" "))
-    tags.remove('') # remove double spaces
+    if '' in tags : tags.remove('')  # remove double spaces
     return (file_id,file_unique_id,tags,type)
 
 @bot.message_handler(commands=['start', 'help'])
