@@ -35,7 +35,7 @@ def get_attrs(message,force_tags:bool = True) -> tuple:
     file_unique_id = eval(f'message.reply_to_message.{type}.file_unique_id')
     if not force_tags: return (file_id,file_unique_id,type)
 
-    tags = set(message.text.split(" ",1)[1].split(" "))
+    tags = set(message.text.lower().split(" ",1)[1].split(" "))
     if '' in tags : tags.remove('')  # remove double spaces
     return (file_id,file_unique_id,tags,type)
 
@@ -95,7 +95,7 @@ def tags(message):
 @bot.inline_handler(func=lambda m: True)
 def testmessage(inline_query):
     results=[]
-    tags = inline_query.query.split(" ")
+    tags = inline_query.query.lower().split(" ")
     print(tags)
     for index,response in enumerate(database.fetch_sticker(tags)):
         results.append(method_map[response[1]](index,response[0]))
